@@ -20,6 +20,6 @@ class AuthRepository implements AuthInterface{
 
     public function logout()
     {
-        return Auth::guard('web')->logout();
+        return Auth::user()->currentAccessToken()->delete();
     }
 }
