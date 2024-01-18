@@ -12,4 +12,7 @@ interface UserInterface {
     public function create(array $user_data) : User;
     public function update(int $user_id, array $user_data) : User;
     public function delete(int $user_id) : User;
+    public function assignCar(int $user_id, int $car_id) : User;
+    public function unassignCar(int $user_id, int $car_id) : User;
+    public function carsByUser(int $user_id, QueryParam $query_param) : LengthAwarePaginator;
 }

@@ -39,4 +39,19 @@ class UserService {
     {
         return $this->user_interface->delete($user_id);
     }
+
+    public function assignCar(int $user_id, int $car_id ) : User
+    {
+        return $this->user_interface->assignCar($user_id, $car_id);
+    }
+
+    public function unassignCar(int $user_id, int $car_id ) : User
+    {
+        return $this->user_interface->unassignCar($user_id, $car_id);
+    }
+
+    public function carsByUser(int $user_id, QueryParam $query_param) : LengthAwarePaginator
+    {
+        return $this->user_interface->carsByUser($user_id, $query_param);
+    }
 }
