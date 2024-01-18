@@ -27,7 +27,7 @@ class UserRepository implements UserInterface {
     public function update(int $user_id, array $user_data) : User
     {
         $user = User::findOrFail($user_id);
-        $user->update($user_data);
+        $user->update(collect($user_data)->pluck(['email', 'password'])->toArray());
         return $user;
     }
 

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Classes\QueryParam;
+use App\Http\Requests\User\UserCreateRequest;
 use App\Http\Requests\User\UserRequest;
+use App\Http\Requests\User\UserUpdateRequest;
 use App\Http\Resources\User\UserResource;
 use App\Http\Resources\User\UsersResource;
 use App\Services\UserService;
@@ -28,7 +30,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserRequest $request)
+    public function store(UserCreateRequest $request)
     {
         return UserResource::make($this->user_service->create($request->all()));
     }
@@ -44,7 +46,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, string $id)
+    public function update(UserUpdateRequest $request, string $id)
     {
         return UserResource::make($this->user_service->update($id, $request->all()));
     }
