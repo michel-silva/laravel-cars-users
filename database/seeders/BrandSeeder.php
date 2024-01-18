@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 class BrandSeeder extends Seeder
 {
-    static $brand_list = [
+    private static $brand_list = [
         'Chevrolet' => [
             ['name' => 'Cruze'],
             ['name' => 'Onix'],
@@ -100,5 +100,10 @@ class BrandSeeder extends Seeder
                 $brand->versions()->firstOrCreate($version, []);
             }
         }
+    }
+
+    public static function countBrands() : int
+    {
+        return count(self::$brand_list);
     }
 }
