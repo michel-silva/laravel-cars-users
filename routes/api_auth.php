@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\UserController;
@@ -17,17 +18,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('login', [AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function() {
+
+    Route::post('logout', [AuthController::class, 'logout']);
+
 });
-
-Route::get('brand', [BrandController::class, 'index']);
-
-Route::prefix('user')->group(function() {
-    Route::post('assignCar', [UserController::class, 'assignCar']);
-    Route::post('unassignCar', [UserController::class, 'unassignCar']);
-    Route::get('{id}/cars', [UserController::class, 'carsByUser']);    
-});
-Route::apiResource('user', UserController::class);
-
-Route::apiResource('car', CarController::class);
