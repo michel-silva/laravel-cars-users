@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Classes\QueryParam;
+use App\Http\Requests\User\UserAssignCarRequest;
 use App\Http\Requests\User\UserCreateRequest;
-use App\Http\Requests\User\UserRequest;
 use App\Http\Requests\User\UserUpdateRequest;
+use App\Http\Resources\Car\CarResource;
 use App\Http\Resources\User\UserResource;
 use App\Http\Resources\User\UsersResource;
 use App\Services\UserService;
@@ -57,5 +58,20 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         return UserResource::make($this->user_service->delete($id));
+    }
+
+    public function assignCar(UserAssignCarRequest $request)
+    {
+        return UserResource::make($this->user_service->assignCar($request->user_id, $request->car_id));
+    }
+
+    public function unassignCar(UserAssignCarRequest $request)
+    {
+        return UserResource::make($this->user_service->unassignCar($request->user_id, $request->car_id));
+    }
+
+    public function carsByUser(Request $request, int $id)
+    {
+        return CarResource::collection($this->user_service->carsByUser($request->id, new QueryParam($request->per_page, $request->page)));
     }
 }

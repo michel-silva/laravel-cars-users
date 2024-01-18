@@ -22,5 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('brand', [BrandController::class, 'index']);
+
+Route::prefix('user')->group(function() {
+    Route::post('assignCar', [UserController::class, 'assignCar']);
+    Route::post('unassignCar', [UserController::class, 'unassignCar']);
+    Route::get('{id}/cars', [UserController::class, 'carsByUser']);    
+});
 Route::apiResource('user', UserController::class);
+
 Route::apiResource('car', CarController::class);
