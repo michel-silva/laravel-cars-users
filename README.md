@@ -38,18 +38,19 @@ php artisan serve
 
 ## Rotas da aplicação
 
-Rotas de autenticação:
+Rotas publicas de autenticação:
 ```
+POST - http://localhost:8000/api/register
 POST - http://localhost:8000/api/login
-POST - http://localhost:8000/api/logout
+POST - http://localhost:8000/api/logout (privada)
 ```
 
-Rota para recuperar as marcas e modelos de carros:
+Rota privadas para recuperar as marcas e modelos de carros:
 ```
 GET - http://localhost:8000/api/brand
 ```
 
-Rotas para manipulação dos carros:
+Rotas privadas para manipulação dos carros:
 ```
 GET - http://localhost:8000/api/car
 GET - http://localhost:8000/api/car/{id}
@@ -58,7 +59,7 @@ PUT - http://localhost:8000/api/car/{id}
 DELETE - http://localhost:8000/api/car/{id}
 ```
 
-Rotas para manipulação dos usuarios:
+Rotas privadas para manipulação dos usuarios:
 ```
 GET - http://localhost:8000/api/user
 GET - http://localhost:8000/api/user/{id}
