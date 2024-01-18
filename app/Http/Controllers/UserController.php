@@ -7,6 +7,7 @@ use App\Http\Requests\User\UserAssignCarRequest;
 use App\Http\Requests\User\UserCreateRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Http\Resources\Car\CarResource;
+use App\Http\Resources\User\UserCarsResource;
 use App\Http\Resources\User\UserResource;
 use App\Http\Resources\User\UsersResource;
 use App\Services\UserService;
@@ -62,12 +63,12 @@ class UserController extends Controller
 
     public function assignCar(UserAssignCarRequest $request)
     {
-        return UserResource::make($this->user_service->assignCar($request->user_id, $request->car_id));
+        return UserCarsResource::make($this->user_service->assignCar($request->user_id, $request->car_id));
     }
 
     public function unassignCar(UserAssignCarRequest $request)
     {
-        return UserResource::make($this->user_service->unassignCar($request->user_id, $request->car_id));
+        return UserCarsResource::make($this->user_service->unassignCar($request->user_id, $request->car_id));
     }
 
     public function carsByUser(Request $request, int $id)
