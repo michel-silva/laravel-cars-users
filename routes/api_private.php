@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::post('unassignCar', [UserController::class, 'unassignCar']);
         Route::get('{id}/cars', [UserController::class, 'carsByUser']);    
     });
-    Route::apiResource('user', UserController::class)->except(['store']);
+    Route::apiResource('user', UserController::class);
 
     Route::apiResource('car', CarController::class);
 
