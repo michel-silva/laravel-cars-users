@@ -2,11 +2,8 @@
 
 namespace App\Services;
 
-use App\Classes\QueryParam;
 use App\Contracts\AuthInterface;
-use App\Models\Car;
-use App\Repositories\CarRepository;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use App\Models\User;
 use Laravel\Sanctum\NewAccessToken;
 
 class AuthService {
@@ -17,6 +14,11 @@ class AuthService {
         $this->auth_interface = $auth_interface;
     }
 
+    public function register(string $name, string $email, string $password) : User
+    {
+        return $this->auth_interface->register($name, $email, $password);
+    }   
+     
     public function login(string $user, string $password) : NewAccessToken
     {
         return $this->auth_interface->login($user, $password);

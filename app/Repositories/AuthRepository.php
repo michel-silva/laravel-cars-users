@@ -3,12 +3,25 @@
 namespace App\Repositories;
 
 use App\Contracts\AuthInterface;
-use App\Models\Car;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Laravel\Sanctum\NewAccessToken;
 
 class AuthRepository implements AuthInterface{
+
+    public function register(string $name, string $email, string $password) : User
+    {
+        $user = User::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => Hash::make($password)
+        ]);
+
+        return $user;
+    }
+
     public function login(string $user, string $password) : NewAccessToken
     {
         if (!Auth::attempt(['email' => $user, 'password' => $password])) {
