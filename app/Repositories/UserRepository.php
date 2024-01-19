@@ -29,7 +29,7 @@ class UserRepository implements UserInterface {
     {
         $user = User::findOrFail($user_id);
 
-        $user_data['name'];
+        unset($user_data['name']);
         $user->update($user_data);
         return $user;
     }
