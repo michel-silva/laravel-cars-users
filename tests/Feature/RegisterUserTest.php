@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class CreateUserTest extends TestCase
+class RegisterUserTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
@@ -23,7 +23,7 @@ class CreateUserTest extends TestCase
     {
         $password = $this->faker->password(8);
 
-        $response = $this->post('/api/user', [
+        $response = $this->post('/api/register', [
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'password' => $password,
