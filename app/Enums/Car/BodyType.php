@@ -2,7 +2,6 @@
 
 namespace App\Enums\Car;
 use App\Traits\EnumRandonValue;
-use Illuminate\Support\Traits\EnumeratesValues;
 
 enum BodyType : string
 {

@@ -6,7 +6,6 @@ use App\Enums\Car\BodyType;
 use App\Enums\Car\FuelType;
 use App\Enums\Car\TransmissionType;
 use App\Models\Brand;
-use App\Models\Version;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\WithFaker;
 

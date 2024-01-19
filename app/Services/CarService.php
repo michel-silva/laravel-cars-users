@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Classes\QueryParam;
 use App\Contracts\CarInterface;
 use App\Models\Car;
-use App\Repositories\CarRepository;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 class CarService {

@@ -7,7 +7,6 @@ use App\Contracts\UserInterface;
 use App\Models\Car;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserInterface {
     public function getPaginate(QueryParam $query_param) : LengthAwarePaginator
