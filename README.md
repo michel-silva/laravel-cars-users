@@ -26,12 +26,17 @@ composer install
 php artisan key:generate
 ```
 
-6 - Rodas as migrations
+6 - Rodar as migrations
 ```
 php artisan migrate --seed
 ```
 
-7 - Iniciar o servidor local
+7 - Rodar os testes
+```
+php artisan test
+```
+
+8 - Iniciar o servidor local
 ```
 php artisan serve
 ```
