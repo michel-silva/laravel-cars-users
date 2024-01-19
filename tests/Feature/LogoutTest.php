@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class LogoutTest extends TestCase
@@ -28,13 +29,12 @@ class LogoutTest extends TestCase
         $user = User::factory()->create([
             'password' => Hash::make($password),
         ]);
+        
+        Sanctum::actingAs($user); 
+        $user->currentAccessToken()->shouldReceive('delete')->once();
 
-        $this->actingAs($user);
-            
-        $this->assertAuthenticatedAs($user);
+        $res = $this->post('/api/logout');
 
-        $response = $this->post('/api/logout', array());
-
-        $response->assertSuccessful();
+        $res->assertOk();
     }
 }
